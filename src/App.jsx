@@ -7,27 +7,36 @@ import { useContext, useEffect, useState } from 'react'
 
 const App = () => {
 
+  setLocalStorage();
+
   const [user, setUser] = useState(null);
   const [isValid, setIsValid] = useState(true);
   const authData = useContext(AuthContext);
+  const [loggedInUserData, setLoggedInUserData] = useState(null)
 
   useEffect(() => {
     if(authData){
       const loggedInUser = localStorage.getItem('loggedInUser');
+      if(loggedInUser){
+        setUser(loggedInUser.role);
+      }
     }
   }, [authData]);
 
-  console.log(authData)
   
 
 
   const loginHandler = (email,password)=>{
     if(email == 'admin@mail.com' && password == '123'){
-      setUser('admin');
+      setUser({role:'admin'});
       localStorage.setItem('loggedInUser',JSON.stringify({role:'admin'}));
-    }else if(authData && authData?.employees?.find((e)=>email == e.email && password == e.password)){
-      setUser('employee');
-      localStorage.setItem('loggedInUser',JSON.stringify({role:'employee'}));
+    }else if(authData){
+      const employee = authData?.employees?.find((e)=>email == e.email && password == e.password)
+      if(employee){
+        setUser({role:'employee'});
+        localStorage.setItem('loggedInUser',JSON.stringify({role:'employee'}));
+        setLoggedInUserData(employee);
+      }
     }else{
       setIsValid(false);
     }
@@ -36,9 +45,9 @@ const App = () => {
   return (
 
         <div>
-          {!user && <Login isValid={isValid} loginHandler={loginHandler}/>}          
-          {user === "admin" && <AdminDashboard  setUser={setUser} />}
-          {user === "employee" && <EmployeeDashboard  setUser={setUser}  />}
+          {!user && <Login isValid={isValid} loginHandler={loginHandler} />}          
+          {user?.role === "admin" && <AdminDashboard  setUser={setUser}  setLoggedInUserData={setLoggedInUserData} userData={loggedInUserData}/>}
+          {user?.role === "employee" && <EmployeeDashboard  setUser={setUser}   setLoggedInUserData={setLoggedInUserData} userData={loggedInUserData}/>}
         </div>
   )
 }

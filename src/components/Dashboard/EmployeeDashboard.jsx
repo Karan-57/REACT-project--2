@@ -3,10 +3,10 @@ import TaskCard from '../../components/EmpDashboard/TaskCard'
 import TaskList from '../../components/TaskList/TaskList'
 
 
-const EmployeeDashboard = ({setUser}) => {
+const EmployeeDashboard = ({setUser, setLoggedInUserData, userData}) => {
   return (
     <div className='bg-[#1c1c1c] h-screen p-10 text-white'> 
-      <Header setUser= {setUser}/>
+      <Header setUser= {setUser} setLoggedInUserData={setLoggedInUserData} userData={userData}/>
       <div className='flex'>
         
       <TaskCard color='bg-red-400'/>
