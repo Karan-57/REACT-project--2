@@ -1,16 +1,18 @@
 import { useState } from "react";
 
-const Login = () => {
+const Login = ({isValid, loginHandler}) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const submitHandler = (e)=>{
     e.preventDefault();
-    console.log(email,password);
+    loginHandler(email, password);
     setEmail('');
     setPassword('');
   }
+
+
 
   return (
     <div className="min-h-screen w-screen flex items-center justify-center">
@@ -35,6 +37,13 @@ const Login = () => {
             }
             type="password" placeholder="password" className="outline-none border-2 w-full border-emerald-500 rounded-full text-xl px-6 py-4 text-white"/>
             <button className="w-full border-none bg-emerald-500 rounded-full text-2xl px-6 py-4 text-white font-semibold  active:scale-95">Login</button>
+            <div className="h-5">
+              {!isValid && (
+                <p className="text-red-700 text-sm font-medium">
+                  Invalid email or password
+                </p>
+              )}
+            </div>
         </form>
       </div>
     </div>
