@@ -15,7 +15,7 @@ const employees = [
     password: "123",
 
     taskCounts: {
-      active: 1,
+      active: 0,
       newTask: 1,
       completed: 1,
       failed: 0
@@ -28,18 +28,21 @@ const employees = [
         title: "Build Login Page",
         description: "Create login UI and validation.",
         priority: "high",
+
         active: false,
         newTask: true,
         completed: false,
         failed: false
       },
+
       {
         date: "2026-06-22",
         category: "Bug Fix",
         title: "Fix Navbar",
         description: "Resolve navbar responsiveness issues.",
         priority: "medium",
-        active: true,
+
+        active: false,
         newTask: false,
         completed: true,
         failed: false
@@ -55,7 +58,7 @@ const employees = [
 
     taskCounts: {
       active: 1,
-      newTask: 1,
+      newTask: 0,
       completed: 0,
       failed: 0
     },
@@ -67,8 +70,9 @@ const employees = [
         title: "Dashboard Mockup",
         description: "Design dashboard screens in Figma.",
         priority: "high",
+
         active: true,
-        newTask: true,
+        newTask: false,
         completed: false,
         failed: false
       }
@@ -82,7 +86,7 @@ const employees = [
     password: "123",
 
     taskCounts: {
-      active: 1,
+      active: 0,
       newTask: 0,
       completed: 0,
       failed: 1
@@ -95,7 +99,8 @@ const employees = [
         title: "API Testing",
         description: "Test employee API endpoints.",
         priority: "medium",
-        active: true,
+
+        active: false,
         newTask: false,
         completed: false,
         failed: true
@@ -123,6 +128,7 @@ const employees = [
         title: "Task Context",
         description: "Implement React Context for tasks.",
         priority: "low",
+
         active: false,
         newTask: true,
         completed: false,
@@ -138,7 +144,7 @@ const employees = [
     password: "123",
 
     taskCounts: {
-      active: 1,
+      active: 0,
       newTask: 0,
       completed: 1,
       failed: 0
@@ -151,7 +157,8 @@ const employees = [
         title: "Project Docs",
         description: "Write setup and usage documentation.",
         priority: "low",
-        active: true,
+
+        active: false,
         newTask: false,
         completed: true,
         failed: false
