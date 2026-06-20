@@ -13,26 +13,36 @@ const employees = [
     name: "Aarav",
     email: "employee1@company.com",
     password: "123",
+
+    taskCounts: {
+      active: 1,
+      newTask: 1,
+      completed: 1,
+      failed: 0
+    },
+
     tasks: [
       {
         date: "2026-06-20",
         category: "Development",
         title: "Build Login Page",
         description: "Create login UI and validation.",
-        completed: false,
-        failed: false,
+        priority: "high",
+        active: false,
         newTask: true,
-        accepted: false
+        completed: false,
+        failed: false
       },
       {
         date: "2026-06-22",
         category: "Bug Fix",
         title: "Fix Navbar",
         description: "Resolve navbar responsiveness issues.",
-        completed: true,
-        failed: false,
+        priority: "medium",
+        active: true,
         newTask: false,
-        accepted: true
+        completed: true,
+        failed: false
       }
     ]
   },
@@ -42,16 +52,25 @@ const employees = [
     name: "Vihaan",
     email: "employee2@company.com",
     password: "123",
+
+    taskCounts: {
+      active: 1,
+      newTask: 1,
+      completed: 0,
+      failed: 0
+    },
+
     tasks: [
       {
         date: "2026-06-21",
         category: "Design",
         title: "Dashboard Mockup",
         description: "Design dashboard screens in Figma.",
-        completed: false,
-        failed: false,
+        priority: "high",
+        active: true,
         newTask: true,
-        accepted: true
+        completed: false,
+        failed: false
       }
     ]
   },
@@ -61,16 +80,25 @@ const employees = [
     name: "Kabir",
     email: "employee3@company.com",
     password: "123",
+
+    taskCounts: {
+      active: 1,
+      newTask: 0,
+      completed: 0,
+      failed: 1
+    },
+
     tasks: [
       {
         date: "2026-06-18",
         category: "Testing",
         title: "API Testing",
         description: "Test employee API endpoints.",
-        completed: false,
-        failed: true,
+        priority: "medium",
+        active: true,
         newTask: false,
-        accepted: true
+        completed: false,
+        failed: true
       }
     ]
   },
@@ -80,16 +108,25 @@ const employees = [
     name: "Arjun",
     email: "employee4@company.com",
     password: "123",
+
+    taskCounts: {
+      active: 0,
+      newTask: 1,
+      completed: 0,
+      failed: 0
+    },
+
     tasks: [
       {
         date: "2026-06-25",
         category: "Development",
         title: "Task Context",
         description: "Implement React Context for tasks.",
-        completed: false,
-        failed: false,
+        priority: "low",
+        active: false,
         newTask: true,
-        accepted: false
+        completed: false,
+        failed: false
       }
     ]
   },
@@ -99,16 +136,25 @@ const employees = [
     name: "Aditya",
     email: "employee5@company.com",
     password: "123",
+
+    taskCounts: {
+      active: 1,
+      newTask: 0,
+      completed: 1,
+      failed: 0
+    },
+
     tasks: [
       {
         date: "2026-06-23",
         category: "Documentation",
         title: "Project Docs",
         description: "Write setup and usage documentation.",
-        completed: true,
-        failed: false,
+        priority: "low",
+        active: true,
         newTask: false,
-        accepted: true
+        completed: true,
+        failed: false
       }
     ]
   }
