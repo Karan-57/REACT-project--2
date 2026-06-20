@@ -7,8 +7,6 @@ import { useContext, useEffect, useState } from 'react'
 
 const App = () => {
 
-  setLocalStorage();
-
   const [user, setUser] = useState(null);
   const [isValid, setIsValid] = useState(true);
   const authData = useContext(AuthContext);
@@ -16,20 +14,42 @@ const App = () => {
 
   useEffect(() => {
     if(authData){
-      const loggedInUser = localStorage.getItem('loggedInUser');
+      const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
       if(loggedInUser){
-        setUser(loggedInUser.role);
+        const roleArray = loggedInUser.role === 'admin' ? authData.admins : authData.employees;
+        const currentUser = roleArray.find(
+          (u)=>u.email === loggedInUser.email
+        );
+        setLoggedInUserData(currentUser);
+        setUser({role:loggedInUser.role});
+        
       }
     }
   }, [authData]);
 
   
 
+  
+  const login = (role, userData) => {
 
-  const loginHandler = (email,password)=>{
+    setUser({ role });
+
+    setLoggedInUserData(userData);
+
+    localStorage.setItem(
+      'loggedInUser',
+      JSON.stringify({role:role,email:userData.email})
+    );
+
+  };
+  
+
+
+  /*const loginHandler = (email,password)=>{
     if(email == 'admin@mail.com' && password == '123'){
       setUser({role:'admin'});
       localStorage.setItem('loggedInUser',JSON.stringify({role:'admin'}));
+      // setLoggedInUserData()
     }else if(authData){
       const employee = authData?.employees?.find((e)=>email == e.email && password == e.password)
       if(employee){
@@ -40,14 +60,29 @@ const App = () => {
     }else{
       setIsValid(false);
     }
+  }*/
+
+   const loginHandler = (email,password)=>{
+    if(authData){
+      const admin = authData?.admins?.find((e)=>email == e.email && password == e.password);
+      const employee=authData?.employees?.find((e)=>email == e.email && password == e.password);
+      if(admin){
+        
+        login('admin',admin);
+      }else if(employee){
+        login('employee',employee);
+      }else{
+        setIsValid(false);
+      }
+
+    }
   }
 
   return (
-
         <div>
           {!user && <Login isValid={isValid} loginHandler={loginHandler} />}          
-          {user?.role === "admin" && <AdminDashboard  setUser={setUser}  setLoggedInUserData={setLoggedInUserData} userData={loggedInUserData}/>}
-          {user?.role === "employee" && <EmployeeDashboard  setUser={setUser}   setLoggedInUserData={setLoggedInUserData} userData={loggedInUserData}/>}
+          {user?.role == "admin" && <AdminDashboard  setUser={setUser}  setLoggedInUserData={setLoggedInUserData} userData={loggedInUserData}/>}
+          {user?.role == "employee" && <EmployeeDashboard  setUser={setUser}   setLoggedInUserData={setLoggedInUserData} userData={loggedInUserData}/>}
         </div>
   )
 }

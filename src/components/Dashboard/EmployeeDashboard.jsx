@@ -9,10 +9,10 @@ const EmployeeDashboard = ({setUser, setLoggedInUserData, userData}) => {
       <Header setUser= {setUser} setLoggedInUserData={setLoggedInUserData} userData={userData}/>
       <div className='flex'>
         
-      <TaskCard color='bg-red-400'/>
-      <TaskCard color='bg-blue-400'/>
-      <TaskCard color='bg-green-400'/>
-      <TaskCard color='bg-yellow-400'/>
+      <TaskCard color='bg-blue-400' type={"new"}/>
+      <TaskCard color='bg-green-400' type={"completed"}/>
+      <TaskCard color='bg-yellow-400' type={"active"}/>
+      <TaskCard color='bg-red-400' type={"failed"}/>
 
       </div>
       <TaskList/>
