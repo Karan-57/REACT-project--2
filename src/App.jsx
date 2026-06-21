@@ -4,13 +4,15 @@ import AdminDashboard from './components/Dashboard/AdminDashboard'
 import {AuthContext}  from './context/AuthProvider'
 import {setLocalStorage, getLocalStorage} from './utils/localStorage'
 import { useContext, useEffect, useState } from 'react'
+import Loading from './components/others/Loading'
 
 const App = () => {
 
   const [user, setUser] = useState(null);
   const [isValid, setIsValid] = useState(true);
   const authData = useContext(AuthContext);
-  const [loggedInUserData, setLoggedInUserData] = useState(null)
+  const [loggedInUserData, setLoggedInUserData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if(authData){
@@ -24,6 +26,7 @@ const App = () => {
         setUser({role:loggedInUser.role});
         
       }
+      setIsLoading(false);
     }
   }, [authData]);
 
@@ -77,10 +80,10 @@ const App = () => {
 
     }
   }
-
   return (
         <div>
-          {!user && <Login isValid={isValid} loginHandler={loginHandler} />}          
+          {isLoading && <Loading/>}
+          {!isLoading && !user && <Login isValid={isValid} loginHandler={loginHandler} />}          
           {user?.role == "admin" && <AdminDashboard  setUser={setUser}  setLoggedInUserData={setLoggedInUserData} userData={loggedInUserData}/>}
           {user?.role == "employee" && <EmployeeDashboard  setUser={setUser}   setLoggedInUserData={setLoggedInUserData} userData={loggedInUserData}/>}
         </div>
