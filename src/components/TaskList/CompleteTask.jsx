@@ -1,4 +1,4 @@
-import PriorityTab from "../Dashboard/priorityTab"
+import PriorityTab from "./PriorityTab"
 const  CompleteTask = ({task}) => {
     
   return (

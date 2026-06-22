@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import PriorityTab from "../Dashboard/priorityTab"
+import PriorityTab from "./PriorityTab"
 import { AuthContext } from "../../context/AuthProvider";
 
 const NewTask = ({task, loggedInUserData}) => {

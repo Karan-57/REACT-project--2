@@ -1,6 +1,6 @@
-import Header from './Header'
-import TaskCard from '../../components/EmpDashboard/TaskCard'
-import TaskList from '../../components/TaskList/TaskList'
+import Header from '../others/Header'
+import TaskCard from './TaskCard'
+import TaskList from '../TaskList/TaskList'
 
 
 const EmployeeDashboard = ({setUser, setLoggedInUserData, loggedInUserData}) => {

@@ -2,7 +2,7 @@ import ActiveTaskCard from "./ActiveTaskCard"
 import { useContext } from "react"
 import {AuthContext}  from '../../context/AuthProvider'
 
-const ActiveTask = () => {
+const AllActiveTask = () => {
 
   const authData = useContext(AuthContext);
   const employees = authData.userData.employees;
@@ -34,4 +34,4 @@ const ActiveTask = () => {
   )
 }
 
-export default ActiveTask
+export default AllActiveTask
