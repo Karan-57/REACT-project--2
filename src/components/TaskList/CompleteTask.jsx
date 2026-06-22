@@ -2,7 +2,7 @@ import PriorityTab from "../Dashboard/priorityTab"
 const  CompleteTask = ({task}) => {
     
   return (
-    <div  className="bg-red-500 w-90 h-full rounded-lg shrink-0 py-4 px-6">
+    <div  className="bg-[#243447] w-90 h-full rounded-lg shrink-0 py-4 px-6">
         <div className=" w-full flex justify-between">
             <PriorityTab priority={task.priority}/>
                 <h6 className="font-medium">{new Date(task.date).toLocaleDateString(
