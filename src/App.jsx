@@ -15,10 +15,10 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if(authData){
+    if(authData.userData){
       const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
       if(loggedInUser){
-        const roleArray = loggedInUser.role === 'admin' ? authData.admins : authData.employees;
+        const roleArray = loggedInUser.role === 'admin' ? authData.userData.admins : authData.userData.employees;
         const currentUser = roleArray.find(
           (u)=>u.email === loggedInUser.email
         );
@@ -28,7 +28,7 @@ const App = () => {
       }
       setIsLoading(false);
     }
-  }, [authData]);
+  }, [authData.userData]);
 
   
 
@@ -67,8 +67,8 @@ const App = () => {
 
    const loginHandler = (email,password)=>{
     if(authData){
-      const admin = authData?.admins?.find((e)=>email == e.email && password == e.password);
-      const employee=authData?.employees?.find((e)=>email == e.email && password == e.password);
+      const admin = authData?.userData?.admins?.find((e)=>email == e.email && password == e.password);
+      const employee=authData?.userData?.employees?.find((e)=>email == e.email && password == e.password);
       if(admin){
         
         login('admin',admin);
@@ -84,8 +84,8 @@ const App = () => {
         <div>
           {isLoading && <Loading/>}
           {!isLoading && !user && <Login isValid={isValid} loginHandler={loginHandler} />}          
-          {user?.role == "admin" && <AdminDashboard  setUser={setUser}  setLoggedInUserData={setLoggedInUserData} userData={loggedInUserData}/>}
-          {user?.role == "employee" && <EmployeeDashboard  setUser={setUser}   setLoggedInUserData={setLoggedInUserData} userData={loggedInUserData}/>}
+          {user?.role == "admin" && <AdminDashboard  setUser={setUser}  setLoggedInUserData={setLoggedInUserData} loggedInUserData={loggedInUserData}/>}
+          {user?.role == "employee" && <EmployeeDashboard  setUser={setUser}   setLoggedInUserData={setLoggedInUserData} loggedInUserData={loggedInUserData}/>}
         </div>
   )
 }

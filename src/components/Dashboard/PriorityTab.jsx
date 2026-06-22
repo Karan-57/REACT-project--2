@@ -1,5 +1,5 @@
 const PriorityTab = ({priority}) => {
-    const color = priority == 'development' ? 'bg-red-500' : 'bg-green-500';
+    const color = priority == 'high' ? 'bg-red-500' : (priority == 'medium' ? 'bg-yellow-500' : 'bg-green-500');
   return (
     <div className={`${color}  px-2 rounded-sm font-medium`}>{priority}</div>
   )

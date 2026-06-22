@@ -6,7 +6,6 @@ const admins =[
     password: "123"
   }
 ];
-
 const employees = [
   {
     id: 1,
@@ -23,11 +22,11 @@ const employees = [
 
     tasks: [
       {
-        date: "2026-06-20",
-        category: "Development",
         title: "Build Login Page",
         description: "Create login UI and validation.",
+        date: "2026-06-20",
         priority: "high",
+        assignTo: "Aarav",
 
         active: false,
         newTask: true,
@@ -36,11 +35,11 @@ const employees = [
       },
 
       {
-        date: "2026-06-22",
-        category: "Bug Fix",
         title: "Fix Navbar",
         description: "Resolve navbar responsiveness issues.",
+        date: "2026-06-22",
         priority: "medium",
+        assignTo: "Aarav",
 
         active: false,
         newTask: false,
@@ -65,11 +64,11 @@ const employees = [
 
     tasks: [
       {
-        date: "2026-06-21",
-        category: "Design",
         title: "Dashboard Mockup",
         description: "Design dashboard screens in Figma.",
+        date: "2026-06-21",
         priority: "high",
+        assignTo: "Vihaan",
 
         active: true,
         newTask: false,
@@ -94,11 +93,11 @@ const employees = [
 
     tasks: [
       {
-        date: "2026-06-18",
-        category: "Testing",
         title: "API Testing",
         description: "Test employee API endpoints.",
+        date: "2026-06-18",
         priority: "medium",
+        assignTo: "Kabir",
 
         active: false,
         newTask: false,
@@ -123,11 +122,11 @@ const employees = [
 
     tasks: [
       {
-        date: "2026-06-25",
-        category: "Development",
         title: "Task Context",
         description: "Implement React Context for tasks.",
+        date: "2026-06-25",
         priority: "low",
+        assignTo: "Arjun",
 
         active: false,
         newTask: true,
@@ -152,11 +151,11 @@ const employees = [
 
     tasks: [
       {
-        date: "2026-06-23",
-        category: "Documentation",
         title: "Project Docs",
         description: "Write setup and usage documentation.",
+        date: "2026-06-23",
         priority: "low",
+        assignTo: "Aditya",
 
         active: false,
         newTask: false,
